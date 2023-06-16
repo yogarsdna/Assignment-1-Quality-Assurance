@@ -1,6 +1,6 @@
 # Assignment-1-Quality-Assurance
 
-This is a repository for the Quality Assurance course.
+This is a repository for my assignments in the Quality Assurance course.
 
 # Assignment #1 - Unit Tests 
 Task:
