@@ -1,4 +1,4 @@
-# Assignment-1-Quality-Assurance
+# Assignment Quality Assurance
 
 This is a repository for my assignments in the Quality Assurance course.
 
