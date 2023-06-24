@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Test Case Validation</title>
+</head>
+<body>
+  <form id="testCaseForm">
+    <p>Enter the test case:</p>
+    <p>
+      Piles: <input id="pilesField" type="text"><br>
+      Hours: <input id="hoursField" type="text"><br>
+      Expected Output: <input id="expectedField" type="text">
+    </p>
+    <button type="button" onclick="validateTestCase()">Validate</button>
+    <p id="validationResult"></p>
+  </form>
+
+  <script>
+    /**
+     * Validates the test case input and checks if it matches the expected result.
+     */
+    function validateTestCase() {
+      const pilesField = document.getElementById('pilesField');
+      const hoursField = document.getElementById('hoursField');
+      const expectedField = document.getElementById('expectedField');
+      const validationResult = document.getElementById('validationResult');
+
+      // Parse the input values for piles, hours, and expected output
+      const piles = pilesField.value.split(',').map(Number);
+      const hours = Number(hoursField.value);
+      const expected = Number(expectedField.value);
+
+      // Check if the input values are valid numbers
+      if (isNaN(hours) || isNaN(expected) || piles.some(isNaN)) {
+        validationResult.textContent = 'Invalid test case. Please enter valid numeric values.';
+        validationResult.style.color = 'red';
+      } else {
+        // Define the solution algorithm
+        const Solution = {
+          minEatingSpeed: function(piles, h) {
+            let l = 1, r = Math.max(...piles);
+            let res = Math.max(...piles);
+
+            while (l <= r) {
+              const k = Math.floor((l + r) / 2);
+              let totalTime = 0;
+
+              for (const p of piles) {
+                totalTime += Math.ceil(p / k);
+              }
+
+              if (totalTime <= h) {
+                res = Math.min(res, k);
+                r = k - 1;
+              } else {
+                l = k + 1;
+              }
+            }
+
+            return res;
+          }
+        };
+
+        const result = Solution.minEatingSpeed(piles, hours);
+
+        // Compare the result with the expected value
+        if (result === expected) {
+          validationResult.textContent = 'Valid test case. Result matches expected value.';
+          validationResult.style.color = 'green';
+        } else {
+          validationResult.textContent = 'Invalid test case. Result does not match expected value.';
+          validationResult.style.color = 'red';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
