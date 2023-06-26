@@ -5,65 +5,65 @@ class SolutionTest(unittest.TestCase):
     def setUp(self):
         self.solution = Solution()
 
-    def test_minEatingSpeed1(self):
+    def test_minEatingSpeed_valid1(self):
         """
-        Test Case 1
+        Test Case 1 - Valid Input
 
         The piles are [3, 6, 7, 11], and the maximum number of hours available is 8.
         The expected minimum eating speed is 4.
-        Since the expected result matches the actual result, the assertion uses assertTrue.
+        This test case verifies that the function returns the correct minimum eating speed for a valid input.
         """
         piles = [3, 6, 7, 11]
         h = 8
         expected = 4
         self.assertTrue(self.solution.minEatingSpeed(piles, h) == expected)
 
-    def test_minEatingSpeed2(self):
+    def test_minEatingSpeed_valid2(self):
         """
-        Test Case 2
+        Test Case 2 - Valid Input
 
         The piles are [30, 11, 23, 4, 20], and the maximum number of hours available is 5.
         The expected minimum eating speed is 30.
-        Since the expected result matches the actual result, the assertion uses assertTrue.
+        This test case verifies that the function returns the correct minimum eating speed for a valid input.
         """
         piles = [30, 11, 23, 4, 20]
         h = 5
         expected = 30
         self.assertTrue(self.solution.minEatingSpeed(piles, h) == expected)
 
-    def test_minEatingSpeed3(self):
+    def test_minEatingSpeed_valid3(self):
         """
-        Test Case 3
+        Test Case 3 - Valid Input
 
         The piles are [30, 11, 23, 4, 20], and the maximum number of hours available is 6.
         The expected minimum eating speed is 23.
-        Since the expected result matches the actual result, the assertion uses assertTrue.
+        This test case verifies that the function returns the correct minimum eating speed for a valid input.
         """
         piles = [30, 11, 23, 4, 20]
         h = 6
         expected = 23
         self.assertTrue(self.solution.minEatingSpeed(piles, h) == expected)
 
-    def test_minEatingSpeed4(self):
+    def test_minEatingSpeed_invalid1(self):
         """
-        Test Case 4
+        Test Case 4 - Invalid Input
 
         The piles are [5, 10, 15, 20], and the maximum number of hours available is 100.
-        The expected minimum eating speed is 0 since it's impossible to eat all the piles within the given time.
-        Since the expected result does not match the actual result, the assertion uses assertFalse.
+        It's impossible to eat all the piles within the given time, so the expected minimum eating speed is 0.
+        This test case covers a scenario where the input values are at the extreme or upper boundary value (h = 100), representing a boundary value.
         """
         piles = [5, 10, 15, 20]
         h = 100
         expected = 0
         self.assertFalse(self.solution.minEatingSpeed(piles, h) == expected)
 
-    def test_minEatingSpeed5(self):
+    def test_minEatingSpeed_invalid2(self):
         """
-        Test Case 5
+        Test Case 5 - Invalid Input
 
         The piles are [5, 10, 15, 20], and the maximum number of hours available is -5.
         The expected minimum eating speed is 5.
-        Since the expected result does not match the actual result, the assertion uses assertFalse.
+        This test case covers a scenario where the input values are at the extreme or lower boundary value (h = -5), representing a boundary value.
         """
         piles = [5, 10, 15, 20]
         h = -5
